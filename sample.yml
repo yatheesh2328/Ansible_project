@@ -1,33 +1,25 @@
+---
 - name: install and deploy tomcat
   hosts: all
   become: true
   tasks:
-- name: updating the packages
-  apt:
-    update_cache: yes
-- name: Installing java
-  shell:
-    cmd: apt install default-jre -y
-- name: downloading tomcat tar file
-  get_url:
-    url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.98/bin/apache-tomcat-8.5.98.tar.gz
-    dest: /opt
-- name: extracting tar file
-  unarchive:
-    src: /opt/apache-tomcat-8.5.98.tar.gz
-    dest: /opt
-    remote_src: yes
-- name: changing file permission for startup file
-  file:
-    path: /opt/apache-tomcat-8.5.98/bin/startup.sh
-    mode: 0777
-- name: changing file permission for shutdownfile
-  file:
-    path: /opt/apache-tomcat-8.5.98/bin/shutdown.sh
-    mode: 0777
-      #- name: re-starting tomcat
-      #shell:
-      #cmd: /opt/apache-tomcat-8.5.98/bin/shutdown.sh
-- name: starting tomcat
-  shell:
-    cmd:  nohup /opt/apache-tomcat-8.5.98/bin/startup.sh
+    - name: updating to latest updates
+      shell: 
+        cmd: apt update
+      
+    - name: installing java
+      shell:
+        cmd: apt install default-jre -y
+      
+    - name: downloading tomcat
+      get_url: 
+        url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.98/bin/apache-tomcat-8.5.98.tar.gz
+        dest: /opt/
+    
+    - name: extracting tomcat
+      shell: 
+        cmd: cd /opt && tar -zvxf apache-tomcat-8.5.98.tar.gz
+
+    - name: starting tomcat
+      shell:
+        cmd: /opt/apache-tomcat-8.5.98/bin/startup.sh
