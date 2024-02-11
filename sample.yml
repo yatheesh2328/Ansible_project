@@ -1,6 +1,6 @@
 ---
 - name: install and deploy tomcat
-  hosts: 172.31.20.183
+  hosts: tomcat
   become: true
   tasks:
     - name: updating to latest updates
