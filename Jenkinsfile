@@ -9,7 +9,7 @@ pipeline {
     }
     stage('running playbook') {
       steps {
-        sh 'ansible-playbook -i hosts sample.yml'
+        ansiblePlaybook credentialsId: '4baafd19-7e7a-43bc-b5ac-dabce8427b15', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/sample.yml', vaultTmpPath: ''
       }
     }
   }
