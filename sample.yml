@@ -1,5 +1,7 @@
----
-# tasks file for tomcat_roles
+- name: install and deploy tomcat
+  hosts: all
+  become: true
+  tasks:
 - name: updating the packages
   apt:
     update_cache: yes
