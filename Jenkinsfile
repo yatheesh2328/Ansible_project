@@ -1,5 +1,7 @@
 pipeline {
-  agent any
+  agent {
+    label 'slave1'
+  }
   stages {
     stage('checkout stage') {
       steps {
@@ -9,7 +11,7 @@ pipeline {
     }
     stage('running playbook') {
       steps {
-        ansiblePlaybook credentialsId: 'b82b62d6-07c6-4fa0-8c96-dd3bfa4c09d8', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/sample.yml', vaultTmpPath: ''
+        sh 'ansible-playbook sample.yml'
       }
     }
   }
