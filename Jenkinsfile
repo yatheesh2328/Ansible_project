@@ -11,7 +11,7 @@ pipeline {
     }
     stage('running playbook') {
       steps {
-        sh 'ansible-playbook sample.yml'
+        sh 'ansible-playbook -i hosts sample.yml'
       }
     }
   }
