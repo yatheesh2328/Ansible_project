@@ -1,4 +1,4 @@
 [tomcat]
 172.31.20.183
-jenkins ALL=(ALL) NOPASSWD: /etc/ansible/apt-get update
+
 
