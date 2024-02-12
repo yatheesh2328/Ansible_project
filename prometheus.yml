@@ -1,5 +1,5 @@
 ---
-- hosts: java
+- hosts: all
   become: true
   tasks:
     - name: Install Prometheus
