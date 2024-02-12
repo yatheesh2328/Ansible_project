@@ -1,6 +1,6 @@
 ---
 - name: install and deploy tomcat
-  hosts: tomcat
+  hosts: all
   become: yes
   tasks:
     - name: updating to latest updates
